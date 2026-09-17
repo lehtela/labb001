@@ -111,12 +111,59 @@ Verifiera med ping.
 
 
 ## Del 3 Kommandoradsarbete och Felsökning (Kursmål 9)  
-* Linux (Bash) 
-* Windows (PowerShell)  
+### * Linux (Bash)  
+Skapa kataloger och filer och ändra behörigheter:
+
+>sudo mkdir -p /var/systementor/konsultdata  
+-p gör att undermappar i mappen kan skapas.
+sudo" ger tillfälliga administrationsrättigheter för att skriva i mappar såsom /var/
+
+>cd /var/systementor/konsultdata
+förflytta dig till konsultdata-katalogen
+
+>sudo touch anteckningar.txt  
+skapar txtfil i mapp vi står i
+
+>ls -la
+listar alla filer och mappar i kataloger samt behörighetsinformation och egenskaper.  
+![Skapa grupper och ändra behörigheter](./3_002_rights.png)  
+skapar gruppnamn konsulter
+>sudo groupadd konsulter  
+
+chgrp ändrar ägandegrupp för olika filer eller kataloger.
+-R gör att hela katalogstrukturen och underliggande filer tilldelas samma värde.
+>sudo chgrp -R konsulter /var/systementor/konsultdata  
+
+applicerar "least privilege"-principen till kataloger och filen anteckningar.txt
+>sudo chmod 750 /var/systementor/konsultdata  
+>sudo chmod 640 /var/systementor/konsultdata/anteckningar.txt  
+
+Hjälper oss verifiera att rättigheter är efter önskade värden.
+katalog "drwxr-x--- (750)" tillhör ägare root och grupper konsulter.
+fil anteckningar.txt "-rw-r---- (640) och tillhör ägare root och grupper konsulter.
+>sudo ls- la  
+
+![Verifera nätverkanslutning till Windows-Vm samt nätverkskortets detaljer för Ubuntu-VM](./3_005_verifyping_addrshow.png)
+Verifiera nätverksanslutning till Windows-VM samt nätverkskortets detaljer för Ubuntu-VM.
+>ping 192.168.1.51  
+>ip addr show  
 
 
+### * Windows (PowerShell)  
+![Windows PowerShell med administratörsrättigheter](./3_006_wfolderacl.png)
+Starta PowerShell med administratörsrättigheter.
 
+Skapa katalog KonsultData i Systementor.
+New-Item skapar nytt objekt, -ItemType Directory bestämmer vilken typ av föremål och -Path bestämmer destination.
+>New-Item -ItemType Directory -Path "C:\Systementor\KonsultData"  
 
+Läs behörigheter över katalog med hjälp av Access Control List. 
+>Get-Acl "C:\Systementor\KonsultData"
+
+![Windows PowerShell visar Ping och Nätverkansinställningar](./3_007_wpingIP.png)
+Verifikera nätverkanslutningen till Ubuntu-Vm genom ping samt visa nätverksinställningar:
+>ping 192.168.1.50  
+>ipconfig /all
 
 ## Del 4: AI-stöd och Kritisk Utvärdering (Kursmål 11)  
 
