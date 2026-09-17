@@ -25,7 +25,89 @@ En ny commit göres för att uppdatera arbete.
 >"git push origin main"  
 
 
+
+
+
+
+
+
+
+
+
 ## Del 2 Virtuell Labbmiljö och Nätverk (Kursmål 8)  
+### Konfiguration av två virtuella maskiner i Virtualbox.
+Det finns två val av konfigurationer mellan de virtuella enheterna, både val isolerar internetåtkomst från de virtuella enheterna.
+
+*Internal Network  
+Isolerat nätverk där virtuella enheter kan kommunicera med varandra.  
+*Host-Only  
+Isolerat nätverk där virtuella enheter kan kommunicera med varandra samt dator som motsvarar host/värd. 
+
+### Skapa adapter i VirtualBox:  
+![VirtualBox Host-only inställningar](./2_001_vboxadapter.png)
+Öppna VirtualBox, välj File>Tools>Network (Ctrl+H)  
+Skapa ny Host-only adapter "VirtualBox Host-Only Ethernet Adapter #2"  
+Välj flik Adapter och Configure Adapter Manually:  
+IPv4 Adress: 192.168.1.1  
+IPv4 Network Mask: 255.255.255.0  
+
+![Virtuella maskinernas inställningar](./2_002_vmsadapter.png)
+Nästa steg är att välja denna adapter för alla de virtuella enheterna:  
+Välj de virtuella enheterna i VirtualBox du vill sammankoppla till Host-Only-adaptern:
+Settings/Network/Adapter 1.
+Enable Adapter 1.
+Attached to: Host-only Adapter
+Name: VirtualBox Host-Only Ethernet Adapter #2.  
+
+### *Linux med Ubuntu Desktop med Host-Only
+![Ubuntu Desktop inställningsvy för statisk IP](./2_004_ubuntuip.png)
+Starta Ubuntu Desktop VM.
+
+Sök i meny efter "settings"  
+Network/Wired/IPv4
+
+[x] ]Manual  
+Address: 192.168.1.50  
+Netmask: 255.255.255.0  
+
+### *Windows 11 med Host-Only
+![Windows 11 inställningsvy för statisk IP](./2_003_winip.png)
+Starta Windows 11 VM.
+Sök i startmeny efter "view network connections".  
+Öppna "Ethernet Intel(R) PRO/100 MT"/Properties/Networking/Internet Protocol Version 4 (TCP/IPv4):  
+ 
+IP address: 192.158.1.51  
+Subnet mask: 255.255.255.0  
+
+### Kommande uppdatering: Terminal och PowerShell konfigurationer
+Genvägar för konfigirationer nås genom Terminal och PowerShell-kommandon.  
+
+### Att verifiera anslutning med ping
+![Windows 11 PowerShell ping](./2_005_ping2fw.png)  
+Windows 11
+PowerShell/kommandotolken: ping 192.168.1.50
+
+![Ubuntu Desktop Terminal ping](./2_005_ping1.png)  
+Ubuntu
+Terminal: ping 192.168.1.51  
+
+Vid tillfälle om Ubuntu inte når Windows 11 med ping:
+Stäng ned Windows 11 VM brandvägg:  
+Terminal med "Run as administrator":  
+```Set-NetFirewallProfile -Profile Domain,Public,Private -Enabled False``` stänger ner Windows egna brandvägg.  
+Verifiera med ping.
+
+### Tabell över konfiguration
+
+| Hostname | Operativsystem | IP-adress | Subnätmask | Standard Gateway |
+| :--- | :--- | :--- | :--- | :--- |
+| Ubuntun-VirtualBox | Ubuntu Desktop | 192.168.1.50 | 255.255.255.0 | Ingen (Host-Only) |
+| Windowsen | Windows 11 | 192.168.1.51 | 255.255.255.0 | Ingen (Host-Only) |
+
+
+
+
+
 
 
 ## Del 3 Kommandoradsarbete och Felsökning (Kursmål 9)  
@@ -33,7 +115,14 @@ En ny commit göres för att uppdatera arbete.
 * Windows (PowerShell)  
 
 
+
+
+
 ## Del 4: AI-stöd och Kritisk Utvärdering (Kursmål 11)  
+
+
+
+
 
 
 ## AI-logg och Utvärdering:  
