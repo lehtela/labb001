@@ -15,20 +15,20 @@ Skapande av ny repository på github.com (lehtela/labb001), anges som Privat.
 Skapande av **C:\GIT\Labb001** och en **testfile.txt** (som senare ska kunna verifiera att att repository fungerar online.)  
 PowerShell öppnas i **C:\GIT\Labb001**.  
 ![Bild på terminal för init repo](./000_setupgitrepo.png)
-1. Initialisera Git i mappen
-`git init` 
+1. `git init` Initialisera Git i mappen
 
-2. Koppla det lokala projektet till GitHub
-`git remote add origin git@github.com:lehtela/Labb001.git` 
 
-3. Adderar nya och ändrade filer till staging (mellanlager, förberedelsestadium). Punkten symbolsiserar aktuell katalog med underkataloger.
-`git add .`  
+2. `git remote add origin git@github.com:lehtela/Labb001.git` Koppla det lokala projektet till GitHub
 
-4. Skapa commit med kommentar/rubrik till uppdatering.
-`git commit -m "First comment on update testfile"`  
 
-5. Laddar upp och pushar ut filer till GitHub
-`git push origin main`  
+3. `git add .`Adderar nya och ändrade filer till staging (mellanlager, förberedelsestadium). Punkten symbolsiserar aktuell katalog med underkataloger.
+  
+
+4. `git commit -m "First comment on update testfile"` Skapa commit med kommentar/rubrik till uppdatering.
+ 
+
+5. `git push origin main`  Laddar upp och pushar ut filer till GitHub
+
 
 
 Git initierar och pushar filer till Github, filer veriferas genom webläsare på sidan https://github.com/lehtela/labb001  
@@ -36,7 +36,8 @@ Git initierar och pushar filer till Github, filer veriferas genom webläsare på
 ### VS Code
 I VS Code, öppna **C:\GIT\Labb001** och skapa **Labbdokumentation.md**.  
 Filen uppdateras med rubrikinnehåll och rubiker/text. 
-Ny commit för att spara arbete online:
+Ny commit för att spara arbete online:  
+
 `git add .`
 
 `git commit -m "Rubriker, spaltindelningar och Del 1"`  
@@ -147,7 +148,7 @@ Ubuntu använder Terminal:
 ### När Ubuntu inte når Windows 11 med ping:
 **Alternativ 1**   
 Öppna PowerShell med "Run as administrator".  
-**Stäng ned Windows 11 VM brandvägg:** 
+**Stäng ned Windows 11 VM brandvägg:**   
 `Set-NetFirewallProfile -Profile Domain,Public,Private -Enabled False` 
 
 Stänger ner Windows Defender Firewall som är operativsystemets brandvägg.  
@@ -163,7 +164,7 @@ En ny regel under namn "Tillåt ICMP Inkommande (PING)" läggs till i brandvägg
 - - - 
 **Alternativ 3**  
 *Obeprövad lösning, använd på egen risk.*  
-Öppna Kommandotolken med "Run as administrator". 
+Öppna Kommandotolken med "Run as administrator".   
 `netsh advfirewall firewall add rule name="Tillåt ICMP Inkommande" protocol=icmpv4:8,any dir=in action=allow`  
 
 En ny regel under namn "Tillåt ICMP Inkommande" läggs till i brandväggsinställningar som tillåter ping.  
@@ -183,24 +184,24 @@ Skapa mappar **/systemmentor/konsultdata**
 
 
 
-Förflytta position till skapad mapp.
+Förflytta position till skapad mapp.  
 `cd /var/systementor/konsultdata`
 
 Skapa **anteckningar.txt**.  
-`touch` skapar text-fil. 
+`touch` skapar text-fil.   
 `sudo touch anteckningar.txt`  
 
-Lista filer med behörigheter/egenskaper. `-la` visar alla filer (även dolda filer som börjar med ".punkt").
+Lista filer med behörigheter/egenskaper. `-la` visar alla filer (även dolda filer som börjar med ".punkt").  
 `ls -la` 
 - - - 
 
 ![Skapa grupper och ändra behörigheter](./3_002_rights.png)
-Skapa gruppnamn **konsulter**
+Skapa gruppnamn **konsulter**  
 `sudo groupadd konsulter`  
 
 **Ändra ägandegrupper**   
 `chgrp` ändrar detta för olika filer och kataloger.  
-`-R` ger hela katalogstrukturen med underliggande filer tilldelas samma värde.
+`-R` ger hela katalogstrukturen med underliggande filer tilldelas samma värde.  
 `sudo chgrp -R konsulter /var/systementor/konsultdata`  
 
 **Applicera "least privilege"-principen** till kataloger och filen anteckningar.txt  
@@ -243,13 +244,13 @@ I jämförelse med Ubuntu-VM så är Windows standardinställningar mer öppna o
 ## Verifiera VM-enheter med ping
 ### Ubuntu-Desktop VM
 ![Verifera nätverkanslutning till Windows-Vm samt nätverkskortets detaljer för Ubuntu-VM](./3_005_verifyping_addrshow.png)
-Verifiera nätverksanslutning från Ubuntu-VM till Windows-VM samt nätverkskortets detaljer för Ubuntu-VM.
+Verifiera nätverksanslutning från Ubuntu-VM till Windows-VM samt nätverkskortets detaljer för Ubuntu-VM.  
 `ping 192.168.1.51`  
 `ip addr show`  
  
 ### Windows VM
 ![Windows PowerShell visar Ping och Nätverkansinställningar](./3_007_wpingIP.png)
-Verifiera nätverkanslutningen från Windows-VM till Ubuntu-VM genom ping samt visa nätverksinställningar:
+Verifiera nätverkanslutningen från Windows-VM till Ubuntu-VM genom ping samt visa nätverksinställningar:  
 `ping 192.168.1.50`  
 `ipconfig /all`  
 
