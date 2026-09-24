@@ -16,19 +16,19 @@ Skapande av **C:\GIT\Labb001** och en **testfile.txt** (som senare ska kunna ver
 PowerShell öppnas i **C:\GIT\Labb001**.  
 ![Bild på terminal för init repo](./000_setupgitrepo.png)
 1. Initialisera Git i mappen
->git init 
+`git init` 
 
 2. Koppla det lokala projektet till GitHub
->git remote add origin git@github.com:lehtela/Labb001.git 
+`git remote add origin git@github.com:lehtela/Labb001.git` 
 
 3. Adderar nya och ändrade filer till staging (mellanlager, förberedelsestadium). Punkten symbolsiserar aktuell katalog med underkataloger.
->git add .  
+`git add .`  
 
 4. Skapa commit med kommentar/rubrik till uppdatering.
->git commit -m "First comment on update testfile"  
+`git commit -m "First comment on update testfile"`  
 
 5. Laddar upp och pushar ut filer till GitHub
->git push origin main  
+`git push origin main`  
 
 
 Git initierar och pushar filer till Github, filer veriferas genom webläsare på sidan https://github.com/lehtela/labb001  
@@ -37,11 +37,11 @@ Git initierar och pushar filer till Github, filer veriferas genom webläsare på
 I VS Code, öppna **C:\GIT\Labb001** och skapa **Labbdokumentation.md**.  
 Filen uppdateras med rubrikinnehåll och rubiker/text. 
 Ny commit för att spara arbete online:
->git add .
+`git add .`
 
->git commit -m "Rubriker, spaltindelningar och Del 1"  
+`git commit -m "Rubriker, spaltindelningar och Del 1"`  
 
->git push origin main  
+`git push origin main`  
 
 
 
@@ -129,8 +129,8 @@ Subnet mask: **255.255.255.0**
 → **OK** 
 
 ### Alternativ PowerShell konfiguration
-Starta PowerShell med "Run as administrator" och ange
->New-NetIPAddress -InterfaceAlias "Ethernet" -IPAddress "192.168.1.51" -PrefixLength 24
+Starta PowerShell med "Run as administrator" och ange  
+`New-NetIPAddress -InterfaceAlias "Ethernet" -IPAddress "192.168.1.51" -PrefixLength 24`
 
 - - -
 
@@ -138,17 +138,17 @@ Starta PowerShell med "Run as administrator" och ange
 Öppna vardera PowerShell/Terminal på var sin enhet och använd ping för att säkerställa att enheter når varandra.
 ![Windows 11 PowerShell ping](./2_005_ping2fw.png)  
 Windows 11 använder PowerShell/kommandotolken:   
->ping 192.168.1.50
+`ping 192.168.1.50`
 - - - 
 ![Ubuntu Desktop Terminal ping](./2_005_ping1.png)  
 Ubuntu använder Terminal: 
->ping 192.168.1.51  
+`ping 192.168.1.51`  
 - - - 
 ### När Ubuntu inte når Windows 11 med ping:
 **Alternativ 1**   
 Öppna PowerShell med "Run as administrator".  
 **Stäng ned Windows 11 VM brandvägg:** 
->Set-NetFirewallProfile -Profile Domain,Public,Private -Enabled False  
+`Set-NetFirewallProfile -Profile Domain,Public,Private -Enabled False` 
 
 Stänger ner Windows Defender Firewall som är operativsystemets brandvägg.  
 Detta är inte ett rekommenderat val om enheter är anslutna till öppet nät eller Internet, men som fungerar temporärt i sluten testmiljö.
@@ -157,14 +157,14 @@ Detta är inte ett rekommenderat val om enheter är anslutna till öppet nät el
 Öppna PowerShell med "Run as administrator".  
 **Tillåt inkommande "ICMP Echo Request"-anrop:**
 
->New-NetFirewallRule -DisplayName "Tillåt ICMP Inkommande (PING)" -Direction Inbound -Protocol ICMPv4 -IcmpType 8 -Action Allow  
+`New-NetFirewallRule -DisplayName "Tillåt ICMP Inkommande (PING)" -Direction Inbound -Protocol ICMPv4 -IcmpType 8 -Action Allow`  
 
 En ny regel under namn "Tillåt ICMP Inkommande (PING)" läggs till i brandväggsinställningar som tillåter ping.
 - - - 
 **Alternativ 3**  
-*<span style="color: red">Obeprövad lösning, använd på egen risk.</span>*  
+*Obeprövad lösning, använd på egen risk.*  
 Öppna Kommandotolken med "Run as administrator". 
->netsh advfirewall firewall add rule name="Tillåt ICMP Inkommande" protocol=icmpv4:8,any dir=in action=allow  
+`netsh advfirewall firewall add rule name="Tillåt ICMP Inkommande" protocol=icmpv4:8,any dir=in action=allow`  
 
 En ny regel under namn "Tillåt ICMP Inkommande" läggs till i brandväggsinställningar som tillåter ping.  
 
@@ -179,40 +179,40 @@ Skapa mappar **/systemmentor/konsultdata**
 `sudo` ger administrationsrättigheter (superuser do) för att skriva i "systemfiler" såsom `/var/`  
 `-p` ger förmågan att skapa mappar-i-mappar, hierarkier.  
 
->sudo mkdir -p /var/systementor/konsultdata  
+`sudo mkdir -p /var/systementor/konsultdata`  
 
 
 
 Förflytta position till skapad mapp.
->cd /var/systementor/konsultdata
+`cd /var/systementor/konsultdata`
 
 Skapa **anteckningar.txt**.  
 `touch` skapar text-fil. 
->sudo touch anteckningar.txt  
+`sudo touch anteckningar.txt`  
 
 Lista filer med behörigheter/egenskaper. `-la` visar alla filer (även dolda filer som börjar med ".punkt").
->ls -la 
+`ls -la` 
 - - - 
 
 ![Skapa grupper och ändra behörigheter](./3_002_rights.png)
 Skapa gruppnamn **konsulter**
->sudo groupadd konsulter  
+`sudo groupadd konsulter`  
 
 **Ändra ägandegrupper**   
 `chgrp` ändrar detta för olika filer och kataloger.  
 `-R` ger hela katalogstrukturen med underliggande filer tilldelas samma värde.
->sudo chgrp -R konsulter /var/systementor/konsultdata  
+`sudo chgrp -R konsulter /var/systementor/konsultdata`  
 
 **Applicera "least privilege"-principen** till kataloger och filen anteckningar.txt  
 `chmod` (change mode) används för ändra behörigheter (läsa, skriva, köra).  
 `750` ger ägare full kontroll, grupp läs/kör och stänger ute andra användare.  
 `640` ger ägare läs/skriv, grupp läs och stänger ute andra användare.  
->sudo chmod 750 /var/systementor/konsultdata  
->sudo chmod 640 /var/systementor/konsultdata/anteckningar.txt  
+`sudo chmod 750 /var/systementor/konsultdata`  
+`sudo chmod 640 /var/systementor/konsultdata/anteckningar.txt`  
 
 **Lista filer med behörigheter**  
 För att verifiera att värden är utefter önskade värden.  
->sudo ls- la
+`sudo ls- la`
 
 Katalog `drwxr-x--- (750)` tillhör ägare root och grupper konsulter.  
 Fil anteckningar.txt `-rw-r----- (640)` och tillhör ägare root och grupper konsulter.
@@ -226,14 +226,14 @@ Skapa katalog KonsultData i Systementor.
 `New-Item` skapar nytt objekt.  
 `-ItemType Directory` bestämmer vilken typ av föremål; directory/mapp.  
 `-Path` bestämmer destination.  
->New-Item -ItemType Directory -Path "C:\Systementor\KonsultData"  
+`New-Item -ItemType Directory -Path "C:\Systementor\KonsultData"`  
 
 Läs behörigheter över katalog med hjälp av Access Control List:  
 Förenklad vy:
->Get-Acl
+`Get-Acl`
 
 Utökad vy:
->(Get-Acl C:\Systementor\KonsultData).Access | Format-Table -AutoSize
+`(Get-Acl C:\Systementor\KonsultData).Access | Format-Table -AutoSize`
 
 Verifiera inställningar.
 
@@ -244,14 +244,14 @@ I jämförelse med Ubuntu-VM så är Windows standardinställningar mer öppna o
 ### Ubuntu-Desktop VM
 ![Verifera nätverkanslutning till Windows-Vm samt nätverkskortets detaljer för Ubuntu-VM](./3_005_verifyping_addrshow.png)
 Verifiera nätverksanslutning från Ubuntu-VM till Windows-VM samt nätverkskortets detaljer för Ubuntu-VM.
->ping 192.168.1.51  
->ip addr show  
+`ping 192.168.1.51`  
+`ip addr show`  
  
 ### Windows VM
 ![Windows PowerShell visar Ping och Nätverkansinställningar](./3_007_wpingIP.png)
 Verifiera nätverkanslutningen från Windows-VM till Ubuntu-VM genom ping samt visa nätverksinställningar:
->ping 192.168.1.50  
->ipconfig /all  
+`ping 192.168.1.50`  
+`ipconfig /all`  
 
 
 
