@@ -1,4 +1,4 @@
-# Labbdokumentation (Labbmiljö, Git, CLI och AI) (MYH 2025/4008)
+# Labbdokumentation (Labbmiljö, Git, CLI och AI)
 Detta repository innehåller dokumentation och praktiska moment för labbmiljö, Git, CLI och AI-dokumentation.
 
 - **Miljö:** VirtualBox (Ubuntu & Windows 11)
