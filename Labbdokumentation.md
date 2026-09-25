@@ -1,7 +1,8 @@
 # Labbmiljö, Git, CLI och AI
-Namn YYY XXX  
-Datum 2026-09-NN  
-Introduktion till yrkesrollen och grunderna i IT-infrastruktur (MYH 2025/4008)
+**Introduktion till yrkesrollen och grunderna i IT-infrastruktur (MYH 2025/4008)**  
+Jonas Lehtelä  
+2026-09-25  
+
  
 Laboration om uppstart för en isolerad virtuell nätverksmiljö med både Windows och Linux (Ubuntu)-maskiner. Inställningar och konfigurationer av angvändargrupper, mappar och behörigheter i PowerShell och Bash samt utförande av nätverkstester med ping. Versionhantering genom av Git som dokumenteras i Markdown. Avslutningsvis utvärdering av AI-verktyget Gemini som kommandoradsstöd.
 
@@ -11,7 +12,7 @@ Laboration om uppstart för en isolerad virtuell nätverksmiljö med både Windo
 
 ## Del 1 - Skapa och initiera projektet med Git
 ### Github
-Skapande av ny repository på github.com (lehtela/labb001), anges som Privat.  
+Skapande av ny repository på github.com (lehtela/labb001).   
 Skapande av **C:\GIT\Labb001** och en **testfile.txt** (som senare ska kunna verifiera att att repository fungerar online.)  
 PowerShell öppnas i **C:\GIT\Labb001**.  
 ![Bild på terminal för init repo](./000_setupgitrepo.png)
@@ -349,12 +350,24 @@ Detta skulle kunna innebära säkerhetsrisker i aktiva IT-miljöer då AI-verkty
 Slutsats att dra är att Gemini inte verkade hallucinera vid frågeställningar, kanske att verktyget valde bort information som inte tycktes vara viktigt, egna antaganden, som ledde till flera följdfrågor från användaren. I övrigt var kod korrekt men smalt uttryckt, det saknas bredd samt exempelvis alternativa vägar som ibland skulle kunna vara bättre. AI ökar effektiviseringen hos studenter och anstälda men risker finns med att personer som använder AI-verktyg måste vara medvetna och källkritiska när AI ger ut data, den behöver inte vara korrekt. Data bör alltid granskas innan det implementeras i skarpa IT-miljöer.
 
 ## Git och Versionshantering
-* Länk till dokumentation - [https://github.com/lehtela/labb001](https://github.com/lehtela/labb001)
 
-(Skärmdump: git log --oneline)
+* Länk till dokumentation - [https://github.com/lehtela/labb001/blob/main/Labbdokumentation.md](https://github.com/lehtela/labb001/blob/main/Labbdokumentation.md)
+* Länk till projekt - [https://github.com/lehtela/labb001](https://github.com/lehtela/labb001)
+
+![PowerShell git](./5_rc1.png)
+
+2025-09-25 git log:
 
 ```
-PowerShell log
-xx
-yy
+PS C:\GIT\Labb001> git log --oneline
+229d24f (HEAD -> main, origin/main) v1.0-RC1 (Release Candidate 1)
+4ddce63 Bugfix Backticks are now working properly
+c5bc4a0 Minor update Updated all commandlines to backticks
+0450185 Updated all details part 1-4 and design is complete
+e673a57 Updated details and design implementations
+68260f1 Update Part 3 (beta) CLI and folders
+e2b6c09 Update Part 2 IP-settings for VM
+ea91ac0 Rubriker, spaltindelningar och Del 1
+3082c86 First comment on update testfile
+PS C:\GIT\Labb001>
   ```
