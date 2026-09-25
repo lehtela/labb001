@@ -1,7 +1,7 @@
 # Labbmiljö, Git, CLI och AI
 Namn YYY XXX  
-Datum 2026-09-NNNNN  
-Kursnamn ZZZZZ CANVAS/filer/MYHZZZZZ  
+Datum 2026-09-NN  
+Introduktion till yrkesrollen och grunderna i IT-infrastruktur (MYH 2025/4008)
  
 Laboration om uppstart för en isolerad virtuell nätverksmiljö med både Windows och Linux (Ubuntu)-maskiner. Inställningar och konfigurationer av angvändargrupper, mappar och behörigheter i PowerShell och Bash samt utförande av nätverkstester med ping. Versionhantering genom av Git som dokumenteras i Markdown. Avslutningsvis utvärdering av AI-verktyget Gemini som kommandoradsstöd.
 
@@ -31,7 +31,8 @@ PowerShell öppnas i **C:\GIT\Labb001**.
 
 
 
-Git initierar och pushar filer till Github, filer veriferas genom webläsare på sidan https://github.com/lehtela/labb001  
+Git initierar och pushar filer till Github, filer veriferas genom webläsare på sidan https://github.com/lehtela/labb001.  
+Övrigt kommando: `git log --oneline` visar senaste commit-kommentarer.
 
 ### VS Code
 I VS Code, öppna **C:\GIT\Labb001** och skapa **Labbdokumentation.md**.  
@@ -96,7 +97,8 @@ Netmask: **255.255.255.0**
 `sudo nano /etc/netplan/00-installer-config.yaml`
 
 Ange värden för fil:
-```network:
+```
+network:
   ethernets:
     enp0s3:
       dhcp4: false
@@ -163,7 +165,8 @@ Detta är inte ett rekommenderat val om enheter är anslutna till öppet nät el
 En ny regel under namn "Tillåt ICMP Inkommande (PING)" läggs till i brandväggsinställningar som tillåter ping.
 - - - 
 **Alternativ 3**  
-*Obeprövad lösning, använd på egen risk.*  
+*Obeprövad lösning, men noterad för framtida behov.*
+
 Öppna Kommandotolken med "Run as administrator".   
 `netsh advfirewall firewall add rule name="Tillåt ICMP Inkommande" protocol=icmpv4:8,any dir=in action=allow`  
 
@@ -213,7 +216,7 @@ Skapa gruppnamn **konsulter**
 
 **Lista filer med behörigheter**  
 För att verifiera att värden är utefter önskade värden.  
-`sudo ls- la`
+`sudo ls -la`
 
 Katalog `drwxr-x--- (750)` tillhör ägare root och grupper konsulter.  
 Fil anteckningar.txt `-rw-r----- (640)` och tillhör ägare root och grupper konsulter.
@@ -337,10 +340,21 @@ Jag:
 Gemini:
 >New-Item: Skapar en ny tom fil om du anger -ItemType File, till exempel New-Item -ItemType File -Name "fil.txt". echo eller omdirigering (>): Skapar en fil med text direkt, till exempel echo "Hej" > fil.txt.
 
-**Slutsats och Reflektion**  
-Svar som Gemini ger mig är tillräckligt för att lösa min uppgift, att skapa ny mapp. Den talar om vad olika kommandon betyder och vad deras funktioner innebär, särskilt när man ställer direkta följdfrågor. Kommandon som ofta används har även fått förkortningar till sig, att istället skriva "Set-Location" kan förkortningen "cd" användas som är en förkortning av 'Change Directory'. Jag säkerställer att det AI har lärt mig är rätt genom att själv prova och skapa mapper i PowerShell i testmiljö som en virtuell maskin för Windows 11.
+## Slutsats och Reflektion  
+Svar som Gemini ger mig är tillräckligt för att lösa min uppgift, att skapa ny mapp. Den talar om vad olika kommandon betyder och vad deras funktioner innebär, särskilt när man ställer direkta följdfrågor. Kommandon som ofta används har även fått förkortningar till sig, att istället skriva "Set-Location" kan förkortningen "cd" användas som är en förkortning av 'Change Directory'. Jag säkerställer att det AI har lärt mig är rätt genom att själv prova och skapa mappar i PowerShell i testmiljö som en virtuell maskin för Windows 11.
 
 Efter fler följdfrågor kommer fler svar fram, man kan tycka att Gemini skulle ha berättat för mig om kommandot SL tidigare men Gemini nämner om att SL inte är ett standardiserat kommando. De är enklare att minnas förkortningar samt enklare att skriva än "Set-Location", som nybörjare eller studerande kan detta skapa förvirring i vad det är som gäller, ska man lita på att AI-verktyg bedömmer rätt åt en? 
 Detta skulle kunna innebära säkerhetsrisker i aktiva IT-miljöer då AI-verktyg kan filtrera bort kritisk information som användare värderar. Särskilt i tidigare skede under dokumentation gav AI-verktyget ett enda förslag som handlade om att stänga ner Windows Defender Firewall för att nå anrop med ping, utan att benämna risker.
 
-Slutsats att dra är att Gemini inte verkade hallucinera vid frågeställningar, kanske att verktyget valde bort information som inte tycktes vara viktigt, egna antaganden, som ledde till flera följdfrågor från användaren. Annarsvis var kod korrekt men smalt uttryckt, det saknas bredd samt exempelvis alternativa vägar som ibland skulle kunna vara bättre.
+Slutsats att dra är att Gemini inte verkade hallucinera vid frågeställningar, kanske att verktyget valde bort information som inte tycktes vara viktigt, egna antaganden, som ledde till flera följdfrågor från användaren. I övrigt var kod korrekt men smalt uttryckt, det saknas bredd samt exempelvis alternativa vägar som ibland skulle kunna vara bättre. AI ökar effektiviseringen hos studenter och anstälda men risker finns med att personer som använder AI-verktyg måste vara medvetna och källkritiska när AI ger ut data, den behöver inte vara korrekt. Data bör alltid granskas innan det implementeras i skarpa IT-miljöer.
+
+## Git och Versionshantering
+* Länk till dokumentation - [https://github.com/lehtela/labb001](https://github.com/lehtela/labb001)
+
+(Skärmdump: git log --oneline)
+
+```
+PowerShell log
+xx
+yy
+  ```
